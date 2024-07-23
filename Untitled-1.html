@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Test</title>
+    <style>
+        .correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+
+    </style>
+    
+</head>
+<body>
+    <div id="text-container">
+        <span id="text-to-type">This is a typing test.</span>
+    </div>
+    <input type="text" id="input-box" autofocus>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const textToType = document.getElementById("text-to-type").innerText;
+
+    const inputBox = document.getElementById("input-box")
+    inputBox.addEventListener("input", () => {
+        const inputText = inputBox.value;
+    
+        let resultHTML = '';
+
+        for (let i = 0; i < textToType.length; i++) {
+            console.log(i);
+            if (i < inputText.length) {
+
+                if (inputText[i] === textToType[i]) {
+                    resultHTML += `<span class="correct">${textToType[i]}</span>`;
+                } else {
+                    resultHTML += `<span class="incorrect">${textToType[i]}</span>`;
+                }
+            } else {
+                resultHTML += `<span>${textToType[i]}</span>`;
+            }
+        }
+
+        document.getElementById("text-to-type").innerHTML = resultHTML;
+    });
+});
+
+        </script>
+</body>
+
+</html>
